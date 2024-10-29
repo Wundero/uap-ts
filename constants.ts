@@ -1,6 +1,17 @@
 export const UA_MAX_LENGTH = 512;
 
-export const SEC_CH_UA_HEADERS = Object.freeze({
+export const SEC_CH_UA_HEADERS: {
+  readonly AGENT: string;
+  readonly ARCH: string;
+  readonly BITNESS: string;
+  readonly FULL_VERSION_LIST: string;
+  readonly FULL_VERSION: string;
+  readonly MOBILE: string;
+  readonly MODEL: string;
+  readonly PLATFORM_VERSION: string;
+  readonly PLATFORM: string;
+  readonly WOW64: string;
+} = Object.freeze({
   AGENT: "sec-ch-ua",
   ARCH: "sec-ch-ua-arch",
   BITNESS: "sec-ch-ua-bitness",
@@ -13,7 +24,21 @@ export const SEC_CH_UA_HEADERS = Object.freeze({
   WOW64: "sec-ch-ua-wow64",
 } as const);
 
-export const WINDOWS_VERSION_MAP = Object.freeze({
+export const WINDOWS_VERSION_MAP: {
+  readonly "4.90": string;
+  readonly "NT 10.0": string;
+  readonly "NT 5.0": string;
+  readonly "NT 5.1": string;
+  readonly "NT 5.2": string;
+  readonly "NT 6.0": string;
+  readonly "NT 6.1": string;
+  readonly "NT 6.2": string;
+  readonly "NT 6.3": string;
+  readonly "NT 6.4": string;
+  readonly "NT3.51": string;
+  readonly "NT4.0": string;
+  readonly ARM: string;
+} = Object.freeze({
   "4.90": "ME",
   "NT 10.0": "10",
   "NT 5.0": "2000",
@@ -29,7 +54,18 @@ export const WINDOWS_VERSION_MAP = Object.freeze({
   ARM: "RT",
 } as const);
 
-export const FORM_FACTOR_MAP = Object.freeze({
+export const FORM_FACTOR_MAP: {
+  readonly Automotive: string;
+  readonly Desktop: string;
+  readonly EInk: string;
+  readonly Mobile: string;
+  readonly Tablet: string;
+  readonly TV: string;
+  readonly Unknown: string;
+  readonly VR: string;
+  readonly Watch: string;
+  readonly XR: string;
+} = Object.freeze({
   Automotive: "embedded",
   Desktop: "desktop",
   EInk: "tablet",
@@ -42,7 +78,12 @@ export const FORM_FACTOR_MAP = Object.freeze({
   XR: "wearable",
 } as const) satisfies Record<string, Device>;
 
-export const BROWSER_TYPES = Object.freeze({
+export const BROWSER_TYPES: {
+  readonly APP: string;
+  readonly BOT: string;
+  readonly BROWSER: string;
+  readonly EMAIL: string;
+} = Object.freeze({
   APP: "app",
   BOT: "bot",
   BROWSER: "browser",
@@ -51,7 +92,224 @@ export const BROWSER_TYPES = Object.freeze({
 
 export type BrowserType = (typeof BROWSER_TYPES)[keyof typeof BROWSER_TYPES];
 
-export const BROWSERS = Object.freeze({
+export const BROWSERS: {
+  readonly _2345_EXPLORER: string;
+  readonly _360: string;
+  readonly ALIPAY: string;
+  readonly AMAROK: string;
+  readonly AMAYA: string;
+  readonly ANDROID: string;
+  readonly AQUALUNG: string;
+  readonly ARES: string;
+  readonly ARORA: string;
+  readonly AUDACIOUS: string;
+  readonly AUDIMUSICSTREAM: string;
+  readonly AVANT: string;
+  readonly AVAST: string;
+  readonly AVG: string;
+  readonly AXIOS: string;
+  readonly BAIDU: string;
+  readonly BASILISK: string;
+  readonly BASS: string;
+  readonly BING: string;
+  readonly BLAZER: string;
+  readonly BOLT: string;
+  readonly BOWSER: string;
+  readonly BRAVE: string;
+  readonly BSPLAYER: string;
+  readonly CAMINO: string;
+  readonly CHIMERA: string;
+  readonly CHROME_HEADLESS: string;
+  readonly CHROME_MOBILE: string;
+  readonly CHROME_WEBVIEW: string;
+  readonly CHROME: string;
+  readonly CHROMIUM: string;
+  readonly CLEMENTINE: string;
+  readonly COBALT: string;
+  readonly COC_COC: string;
+  readonly COMODO_DRAGON: string;
+  readonly CONKEROR: string;
+  readonly COREMEDIA: string;
+  readonly CURL: string;
+  readonly DALVIK: string;
+  readonly DILLO: string;
+  readonly DOLPHIN: string;
+  readonly DORIS: string;
+  readonly DUCKDUCKGO: string;
+  readonly EDGE: string;
+  readonly ELECTRON: string;
+  readonly EPIPHANY: string;
+  readonly FACEBOOK: string;
+  readonly FACEBOOKEXTERNALHIT: string;
+  readonly FALKON: string;
+  readonly FENNEC: string;
+  readonly FFMPEG: string;
+  readonly FIREBIRD: string;
+  readonly FIREFOX_FOCUS: string;
+  readonly FIREFOX_MOBILE: string;
+  readonly FIREFOX_REALITY: string;
+  readonly FIREFOX: string;
+  readonly FLIP_PLAYER: string;
+  readonly FLOCK: string;
+  readonly FLOW: string;
+  readonly FOOBAR2000: string;
+  readonly FSTREAM: string;
+  readonly GNOMEMPLAYER: string;
+  readonly GO: string;
+  readonly GOOGLE_SEARCH: string;
+  readonly GOOGLE: string;
+  readonly GPTBOT: string;
+  readonly GSTREAMER: string;
+  readonly GVFS: string;
+  readonly HEYTAP: string;
+  readonly HTC_ONE_S: string;
+  readonly HTC_STREAMING_PLAYER: string;
+  readonly HUAWEI: string;
+  readonly IA_ARCHIVER: string;
+  readonly ICAB: string;
+  readonly ICE: string;
+  readonly ICEAPE: string;
+  readonly ICECAT: string;
+  readonly ICEDRAGON: string;
+  readonly ICEWEASEL: string;
+  readonly IE_MOBILE: string;
+  readonly IE: string;
+  readonly INLIGHT_RADIO: string;
+  readonly INSTAGRAM: string;
+  readonly IRAPP: string;
+  readonly IRIDIUM: string;
+  readonly IRON: string;
+  readonly ITUNES: string;
+  readonly JASMINE: string;
+  readonly JAVA: string;
+  readonly JSDOM: string;
+  readonly K_MELEON: string;
+  readonly KAKAO: string;
+  readonly KHTML: string;
+  readonly KINDLE: string;
+  readonly KLAR: string;
+  readonly KLARNA: string;
+  readonly KONQUEROR: string;
+  readonly LENOVO: string;
+  readonly LG_PLAYER: string;
+  readonly LIEBAO: string;
+  readonly LINE: string;
+  readonly LINKEDIN: string;
+  readonly LINKS: string;
+  readonly LUNASCAPE: string;
+  readonly LYNX: string;
+  readonly LYSSNA: string;
+  readonly MAEMO: string;
+  readonly MAXTHON: string;
+  readonly MEDIA_PLAYER_CLASSIC: string;
+  readonly MICROSOFT_OUTLOOK: string;
+  readonly MIDORI: string;
+  readonly MINIMO: string;
+  readonly MIUI: string;
+  readonly MOC: string;
+  readonly MOSAIC: string;
+  readonly MOZILLA: string;
+  readonly MPD: string;
+  readonly MPLAYER_SVN: string;
+  readonly MPLAYER: string;
+  readonly MSN: string;
+  readonly NATIVEHOST: string;
+  readonly NAVER: string;
+  readonly NERO_HOME: string;
+  readonly NERO_SCOUT: string;
+  readonly NERO_SHOWTIME: string;
+  readonly NETFRONT: string;
+  readonly NETSCAPE: string;
+  readonly NETSURF: string;
+  readonly NEXPLAYER: string;
+  readonly NOKIA_BROWSER: string;
+  readonly NOKIA: string;
+  readonly NSPLAYER: string;
+  readonly OBIGO: string;
+  readonly OCMS_BOT: string;
+  readonly OCULUS: string;
+  readonly OMNIWEB: string;
+  readonly OPENCORE: string;
+  readonly OPERA_COAST: string;
+  readonly OPERA_MINI: string;
+  readonly OPERA_MOBI: string;
+  readonly OPERA_TABLET: string;
+  readonly OPERA_TOUCH: string;
+  readonly OPERA: string;
+  readonly OSSPROXY: string;
+  readonly OVI: string;
+  readonly PALEMOON: string;
+  readonly PHANTOMJS: string;
+  readonly PHOENIX: string;
+  readonly POLARIS: string;
+  readonly PSP_INTERNETRADIOPLAYER: string;
+  readonly PUFFIN: string;
+  readonly QQ_LITE: string;
+  readonly QQ: string;
+  readonly QUARK: string;
+  readonly QUERYSEEKSPIDER: string;
+  readonly QUICKTIME: string;
+  readonly QUPZILLA: string;
+  readonly RAD_IO: string;
+  readonly RADIOAPP: string;
+  readonly RADIOCLIENTAPPLICATION: string;
+  readonly REALMEDIA: string;
+  readonly REKONQ: string;
+  readonly REQUESTS: string;
+  readonly RISEUP_RADIO_ALARM: string;
+  readonly ROCKMELT: string;
+  readonly SAFARI_MOBILE: string;
+  readonly SAFARI: string;
+  readonly SAILFISH: string;
+  readonly SAMSUNG: string;
+  readonly SCRAPY: string;
+  readonly SEAMONKEY: string;
+  readonly SILK: string;
+  readonly SKYFIRE: string;
+  readonly SLACK: string;
+  readonly SLEIPNIR: string;
+  readonly SLIMBROWSER: string;
+  readonly SMP: string;
+  readonly SNAPCHAT: string;
+  readonly SOGOU_EXPLORER: string;
+  readonly SOGOU_MOBILE: string;
+  readonly SONGBIRD: string;
+  readonly SOUNDTAP: string;
+  readonly STAGEFRIGHT: string;
+  readonly STREAMIUM: string;
+  readonly SWIFTFOX: string;
+  readonly TAP_IN_RADIO: string;
+  readonly TESLA: string;
+  readonly THUNDERBIRD: string;
+  readonly TIKTOK: string;
+  readonly TIZEN: string;
+  readonly TOTEM: string;
+  readonly TUNEIN: string;
+  readonly UC: string;
+  readonly UNKNOWN: string;
+  readonly UP: string;
+  readonly URLLIB: string;
+  readonly VIDEOS: string;
+  readonly VIERA: string;
+  readonly VIVALDI: string;
+  readonly VIVO: string;
+  readonly VLC: string;
+  readonly W3M: string;
+  readonly WATERFOX: string;
+  readonly WEBKIT: string;
+  readonly WECHAT: string;
+  readonly WEIBO: string;
+  readonly WGET: string;
+  readonly WHALE: string;
+  readonly WINAMP: string;
+  readonly WINDOWS_MEDIA_PLAYER: string;
+  readonly WINDOWS_MEDIA_SERVER: string;
+  readonly XBMC: string;
+  readonly XINE: string;
+  readonly XMMS: string;
+  readonly YANDEX: string;
+  readonly YOURMUZE: string;
+} = Object.freeze({
   _2345_EXPLORER: "2345Explorer",
   _360: "360 Browser",
   ALIPAY: "Alipay",
@@ -272,7 +530,25 @@ export const BROWSERS = Object.freeze({
 
 export type Browser = (typeof BROWSERS)[keyof typeof BROWSERS];
 
-export const ARCHITECTURES = Object.freeze({
+export const ARCHITECTURES: {
+  readonly ARM_64: string;
+  readonly ARM_HF: string;
+  readonly ARM: string;
+  readonly AVR_32: string;
+  readonly AVR: string;
+  readonly IA64: string;
+  readonly IRIX_64: string;
+  readonly IRIX: string;
+  readonly M68K: string;
+  readonly MIPS_64: string;
+  readonly MIPS: string;
+  readonly PA_RISC: string;
+  readonly PPC: string;
+  readonly SPARC_64: string;
+  readonly SPARC: string;
+  readonly X86_64: string;
+  readonly X86: string;
+} = Object.freeze({
   ARM_64: "arm64",
   ARM_HF: "armhf",
   ARM: "arm",
@@ -294,7 +570,15 @@ export const ARCHITECTURES = Object.freeze({
 
 export type CPU = (typeof ARCHITECTURES)[keyof typeof ARCHITECTURES];
 
-export const DEVICES = Object.freeze({
+export const DEVICES: {
+  readonly CONSOLE: string;
+  readonly DESKTOP: string;
+  readonly EMBEDDED: string;
+  readonly MOBILE: string;
+  readonly SMARTTV: string;
+  readonly TABLET: string;
+  readonly WEARABLE: string;
+} = Object.freeze({
   CONSOLE: "console",
   DESKTOP: "desktop",
   EMBEDDED: "embedded",
@@ -306,7 +590,82 @@ export const DEVICES = Object.freeze({
 
 export type Device = (typeof DEVICES)[keyof typeof DEVICES];
 
-export const VENDORS = Object.freeze({
+export const VENDORS: {
+  readonly ACER: string;
+  readonly ALCATEL: string;
+  readonly AMAZON: string;
+  readonly APPLE: string;
+  readonly ARCHOS: string;
+  readonly ASUS: string;
+  readonly ATT: string;
+  readonly BARNES_AND_NOBLE: string;
+  readonly BENQ: string;
+  readonly BLACKBERRY: string;
+  readonly DELL: string;
+  readonly DRAGON_TOUCH: string;
+  readonly ENVIZEN: string;
+  readonly ESSENTIAL: string;
+  readonly FACEBOOK: string;
+  readonly FAIRPHONE: string;
+  readonly GEEKSPHONE: string;
+  readonly GENERIC: string;
+  readonly GIGASET: string;
+  readonly GOOGLE: string;
+  readonly HP: string;
+  readonly HTC: string;
+  readonly HUAWEI: string;
+  readonly INFINIX: string;
+  readonly INSIGNIA: string;
+  readonly JOLLA: string;
+  readonly KOBO: string;
+  readonly LE_PAN: string;
+  readonly LENOVO: string;
+  readonly LG: string;
+  readonly LVTEL: string;
+  readonly MACHSPEED: string;
+  readonly MEIZU: string;
+  readonly MICROSOFT: string;
+  readonly MOTOROLA: string;
+  readonly NEXIAN: string;
+  readonly NEXTBOOK: string;
+  readonly NINTENDO: string;
+  readonly NOKIA: string;
+  readonly NOOK: string;
+  readonly NUVISION: string;
+  readonly NVIDIA: string;
+  readonly ONEPLUS: string;
+  readonly OPPO: string;
+  readonly OUYA: string;
+  readonly PALM: string;
+  readonly PANASONIC: string;
+  readonly PEBBLE: string;
+  readonly POLYTRON: string;
+  readonly RCA: string;
+  readonly REALME: string;
+  readonly RIM: string;
+  readonly ROKU: string;
+  readonly ROTOR: string;
+  readonly SAMSUNG: string;
+  readonly SHARP: string;
+  readonly SIEMENS: string;
+  readonly SONY: string;
+  readonly SPRINT: string;
+  readonly SWISS: string;
+  readonly TECHNISAT: string;
+  readonly TECNO: string;
+  readonly TESLA: string;
+  readonly TRINITY: string;
+  readonly ULEFONE: string;
+  readonly VERIZON: string;
+  readonly VIVO: string;
+  readonly VODAFONE: string;
+  readonly VOICE: string;
+  readonly XBOX: string;
+  readonly XIAOMI: string;
+  readonly ZEBRA: string;
+  readonly ZEKI: string;
+  readonly ZTE: string;
+} = Object.freeze({
   ACER: "Acer",
   ALCATEL: "Alcatel",
   AMAZON: "Amazon",
@@ -385,7 +744,26 @@ export const VENDORS = Object.freeze({
 
 export type Vendor = (typeof VENDORS)[keyof typeof VENDORS];
 
-export const ENGINES = Object.freeze({
+export const ENGINES: {
+  readonly AMAYA: string;
+  readonly BLINK: string;
+  readonly EDGEHTML: string;
+  readonly FLOW: string;
+  readonly GECKO: string;
+  readonly GOANNA: string;
+  readonly ICAB: string;
+  readonly KHTML: string;
+  readonly LIBWEB: string;
+  readonly LINKS: string;
+  readonly LYNX: string;
+  readonly NETFRONT: string;
+  readonly NETSURF: string;
+  readonly PRESTO: string;
+  readonly TASMAN: string;
+  readonly TRIDENT: string;
+  readonly W3M: string;
+  readonly WEBKIT: string;
+} = Object.freeze({
   AMAYA: "Amaya",
   BLINK: "Blink",
   EDGEHTML: "EdgeHTML",
@@ -408,7 +786,87 @@ export const ENGINES = Object.freeze({
 
 export type Engine = (typeof ENGINES)[keyof typeof ENGINES];
 
-export const OS = Object.freeze({
+export const OS: {
+  readonly AIX: string;
+  readonly AMIGA_OS: string;
+  readonly ANDROID_X86: string;
+  readonly ANDROID: string;
+  readonly ARCH: string;
+  readonly BADA: string;
+  readonly BEOS: string;
+  readonly BLACKBERRY: string;
+  readonly CENTOS: string;
+  readonly CHROME_OS: string;
+  readonly CHROMECAST: string;
+  readonly CONTIKI: string;
+  readonly DEBIAN: string;
+  readonly DEEPIN: string;
+  readonly DRAGONFLY: string;
+  readonly ELEMENTARY_OS: string;
+  readonly FEDORA: string;
+  readonly FIREFOX_OS: string;
+  readonly FREEBSD: string;
+  readonly FUCHSIA: string;
+  readonly GENTOO: string;
+  readonly GHOSTBSD: string;
+  readonly GNU: string;
+  readonly HAIKU: string;
+  readonly HARMONYOS: string;
+  readonly HP_UX: string;
+  readonly HURD: string;
+  readonly IOS: string;
+  readonly JOLI: string;
+  readonly KAIOS: string;
+  readonly LINPUS: string;
+  readonly LINSPIRE: string;
+  readonly LINUX: string;
+  readonly MACOS: string;
+  readonly MAEMO: string;
+  readonly MAGEIA: string;
+  readonly MANDRIVA: string;
+  readonly MANJARO: string;
+  readonly MEEGO: string;
+  readonly MINIX: string;
+  readonly MINT: string;
+  readonly MORPH_OS: string;
+  readonly NETBSD: string;
+  readonly NETRANGE: string;
+  readonly NETTV: string;
+  readonly NINTENDO: string;
+  readonly OPENBSD: string;
+  readonly OPENVMS: string;
+  readonly OS2: string;
+  readonly PALM: string;
+  readonly PC_BSD: string;
+  readonly PCLINUXOS: string;
+  readonly PLAN9: string;
+  readonly PLAYSTATION: string;
+  readonly QNX: string;
+  readonly RASPBIAN: string;
+  readonly REDHAT: string;
+  readonly RIM_TABLET_OS: string;
+  readonly RISC_OS: string;
+  readonly SABAYON: string;
+  readonly SAILFISH: string;
+  readonly SERENITYOS: string;
+  readonly SERIES40: string;
+  readonly SLACKWARE: string;
+  readonly SOLARIS: string;
+  readonly SUSE: string;
+  readonly SYMBIAN: string;
+  readonly TIZEN: string;
+  readonly UBUNTU: string;
+  readonly UNIX: string;
+  readonly VECTORLINUX: string;
+  readonly VIERA: string;
+  readonly WATCHOS: string;
+  readonly WEBOS: string;
+  readonly WINDOWS_MOBILE: string;
+  readonly WINDOWS_PHONE: string;
+  readonly WINDOWS: string;
+  readonly XBOX: string;
+  readonly ZENWALK: string;
+} = Object.freeze({
   AIX: "AIX",
   AMIGA_OS: "Amiga OS",
   ANDROID_X86: "Android-x86",
