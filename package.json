@@ -4,6 +4,7 @@
   "description": "User Agent Parser for TypeScript",
   "type": "module",
   "exports": "./mod.ts",
+  "main": "./mod.ts",
   "keywords": [],
   "author": "",
   "license": "ISC",
