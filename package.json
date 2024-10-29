@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "User Agent Parser for TypeScript",
   "type": "module",
-  "main": "index.js",
+  "exports": "./mod.ts",
   "keywords": [],
   "author": "",
   "license": "ISC",
