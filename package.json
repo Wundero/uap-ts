@@ -1,6 +1,6 @@
 {
   "name": "@wundero/uap-ts",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "User Agent Parser for TypeScript",
   "type": "module",
   "exports": "./mod.ts",
