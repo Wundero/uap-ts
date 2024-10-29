@@ -1,4 +1,5 @@
 /* eslint-disable no-useless-escape */
+import type { Vendor } from "../constants";
 import { parsersFromRegexes } from "./index";
 
 const p = parsersFromRegexes<"device">;
@@ -980,7 +981,7 @@ export const parsers = [
       ],
       (match) => {
         return {
-          vendor: match[1],
+          vendor: match[1] as Vendor,
           model: match[2],
           type: "smarttv",
         };

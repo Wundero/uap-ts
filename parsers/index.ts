@@ -1,5 +1,5 @@
 /* eslint-disable no-useless-escape */
-import type { BrowserInfo, Parser, Result } from "../constants";
+import type { Browser, BrowserInfo, OS, Parser, Result } from "../constants";
 import { SEC_CH_UA_HEADERS } from "../constants";
 import { parsers as archParsers } from "./arch";
 import { parsers as browserParsers } from "./browser";
@@ -113,7 +113,7 @@ export function parseCHHeaders<T extends keyof Result>(
             !/not.a.brand/i.test(brand) &&
             (i < 1 || /chromi/i.test(out.name ?? ""))
           ) {
-            out.name = brand.replace("Google ", "");
+            out.name = brand.replace("Google ", "") as Browser;
             out.version = version;
             out.major = majorize(version);
           }
@@ -164,7 +164,7 @@ export function parseCHHeaders<T extends keyof Result>(
           } as Result[T];
         } else {
           const out: Result["os"] = {
-            name: platform,
+            name: platform as OS,
             version: platformVersion,
           };
           return out as Result[T];
