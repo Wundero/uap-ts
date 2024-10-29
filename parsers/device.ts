@@ -1,6 +1,6 @@
 /* eslint-disable no-useless-escape */
 import type { Vendor } from "../constants";
-import { parsersFromRegexes } from ".";
+import { parsersFromRegexes } from "./index";
 
 const p = parsersFromRegexes<"device">;
 

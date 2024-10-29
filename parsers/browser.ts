@@ -1,5 +1,5 @@
 /* eslint-disable no-useless-escape */
-import { parsersFromRegexes } from ".";
+import { parsersFromRegexes } from "./index";
 
 const p: typeof parsersFromRegexes<"browser"> = (r, mf, s) => {
   return parsersFromRegexes<"browser">(

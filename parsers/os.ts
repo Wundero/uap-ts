@@ -1,6 +1,6 @@
 /* eslint-disable no-useless-escape */
 import type { OS } from "../constants";
-import { parsersFromRegexes } from ".";
+import { parsersFromRegexes } from "./index";
 import { WINDOWS_VERSION_MAP } from "../constants";
 
 const p = parsersFromRegexes<"os">;
