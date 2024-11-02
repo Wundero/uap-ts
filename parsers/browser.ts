@@ -21,6 +21,9 @@ function majorize(version?: string) {
   return version.replace(/[^\d\.]/g, "").split(".")[0];
 }
 
+/**
+ * Collection of parsers for browser info
+ */
 export const parsers = [
   [
     // Safari

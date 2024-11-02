@@ -7,6 +7,13 @@ import { parsers as deviceParsers } from "./device";
 import { parsers as engineParsers } from "./engine";
 import { parsers as osParsers } from "./os";
 
+/**
+ * Convert a list of regular expressions into a parser
+ * @param regexes The list of regular expressions to match
+ * @param handle What to do if a match is found
+ * @param specificity How specific this parser is
+ * @returns The parser
+ */
 export function parsersFromRegexes<T extends keyof Result>(
   regexes: RegExp[],
   handle: (match: RegExpMatchArray) => Result[T],
@@ -40,6 +47,12 @@ function runParsers<T extends keyof Result>(
   return {};
 }
 
+/**
+ * Parse a user agent string
+ * @param type The type of parser to use
+ * @param data The user agent string to parse
+ * @returns The parsed result
+ */
 export function parse<T extends keyof Result>(
   type: T,
   data: string,
@@ -83,6 +96,13 @@ function brandListToArray(header?: string | null) {
   }
   return arr;
 }
+
+/**
+ * Parse Sec-CH-UA headers
+ * @param itemType The type of parser to use
+ * @param headers The headers to parse
+ * @returns The parsed result
+ */
 export function parseCHHeaders<T extends keyof Result>(
   itemType: T,
   headers: Headers,
@@ -175,6 +195,11 @@ export function parseCHHeaders<T extends keyof Result>(
   return {};
 }
 
+/**
+ * Parse a user agent string
+ * @param userAgent The user agent string to parse
+ * @returns The parsed result
+ */
 export function parseUA(userAgent: string): Result {
   const output = {
     os: runParsers(osParsers, userAgent),
@@ -191,6 +216,12 @@ export function parseUA(userAgent: string): Result {
   }
 }
 
+/**
+ * Guess the user information based on the provided data.
+ * @param ua The user agent string to parse
+ * @param headers Additional headers to enhance the parsing
+ * @returns The parsed result
+ */
 export function guess(ua: string, headers?: Headers): Result {
   if (!headers) {
     return parseUA(ua);

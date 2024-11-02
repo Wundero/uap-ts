@@ -3,6 +3,9 @@ import { parsersFromRegexes } from "./index";
 
 const p = parsersFromRegexes<"engine">;
 
+/**
+ * Collection of parsers for browser engines
+ */
 export const parsers = [
   [
     // Uncommon

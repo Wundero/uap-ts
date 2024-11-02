@@ -1,5 +1,6 @@
-export const UA_MAX_LENGTH = 512;
-
+/**
+ * Header name mappings for the `Sec-CH-UA-*` headers.
+ */
 export const SEC_CH_UA_HEADERS: {
   AGENT: "sec-ch-ua";
   ARCH: "sec-ch-ua-arch";
@@ -24,6 +25,9 @@ export const SEC_CH_UA_HEADERS: {
   WOW64: "sec-ch-ua-wow64",
 } as const);
 
+/**
+ * User agent windows names -> real names mapping
+ */
 export const WINDOWS_VERSION_MAP: {
   "4.90": "ME";
   "NT 10.0": "10";
@@ -54,6 +58,9 @@ export const WINDOWS_VERSION_MAP: {
   ARM: "RT",
 } as const);
 
+/**
+ * Device type to form factor mapping
+ */
 export const FORM_FACTOR_MAP: {
   Automotive: "embedded";
   Desktop: "desktop";
@@ -78,6 +85,9 @@ export const FORM_FACTOR_MAP: {
   XR: "wearable",
 } as const) satisfies Record<string, Device>;
 
+/**
+ * The set of all possible "browser" types
+ */
 export const BROWSER_TYPES: {
   APP: "app";
   BOT: "bot";
@@ -90,8 +100,14 @@ export const BROWSER_TYPES: {
   EMAIL: "email",
 } as const);
 
+/**
+ * A possible browser type
+ */
 export type BrowserType = (typeof BROWSER_TYPES)[keyof typeof BROWSER_TYPES];
 
+/**
+ * The set of known browsers
+ */
 export const BROWSERS: {
   _2345_EXPLORER: "2345Explorer";
   _360: "360 Browser";
@@ -528,8 +544,14 @@ export const BROWSERS: {
   YOURMUZE: "YourMuze",
 } as const);
 
+/**
+ * A known browser
+ */
 export type Browser = (typeof BROWSERS)[keyof typeof BROWSERS];
 
+/**
+ * The set of known CPU architectures
+ */
 export const ARCHITECTURES: {
   ARM_64: "arm64";
   ARM_HF: "armhf";
@@ -568,8 +590,14 @@ export const ARCHITECTURES: {
   X86: "ia32",
 } as const);
 
+/**
+ * A known CPU architecture
+ */
 export type CPU = (typeof ARCHITECTURES)[keyof typeof ARCHITECTURES];
 
+/**
+ * The set of known device types
+ */
 export const DEVICES: {
   CONSOLE: "console";
   DESKTOP: "desktop";
@@ -588,8 +616,14 @@ export const DEVICES: {
   WEARABLE: "wearable",
 } as const);
 
+/**
+ * A known device type
+ */
 export type Device = (typeof DEVICES)[keyof typeof DEVICES];
 
+/**
+ * The set of known device vendors
+ */
 export const VENDORS: {
   ACER: "Acer";
   ALCATEL: "Alcatel";
@@ -742,8 +776,14 @@ export const VENDORS: {
   ZTE: "ZTE",
 } as const);
 
+/**
+ * A device vendor
+ */
 export type Vendor = (typeof VENDORS)[keyof typeof VENDORS];
 
+/**
+ * The set of known browser engines
+ */
 export const ENGINES: {
   AMAYA: "Amaya";
   BLINK: "Blink";
@@ -784,8 +824,14 @@ export const ENGINES: {
   WEBKIT: "WebKit",
 } as const);
 
+/**
+ * A known browser engine
+ */
 export type Engine = (typeof ENGINES)[keyof typeof ENGINES];
 
+/**
+ * The set of known operating systems
+ */
 export const OS: {
   AIX: "AIX";
   AMIGA_OS: "Amiga OS";
@@ -948,53 +994,158 @@ export const OS: {
   ZENWALK: "Zenwalk",
 } as const);
 
+/**
+ * A known operating system
+ */
 export type OS = (typeof OS)[keyof typeof OS];
 
+/**
+ * Information about the user's browser
+ */
 export interface BrowserInfo {
+  /**
+   * The browser's name
+   */
   name?: Browser;
+  /**
+   * The full version string. Can sometimes just be the major followed by zeroes, depending on user privacy settings.
+   */
   version?: string;
+  /**
+   * The major version of the browser
+   */
   major?: string;
+  /**
+   * The type of browser
+   */
   type?: BrowserType;
 }
 
+/**
+ * Information about the user's CPU
+ */
 export interface CPUInfo {
+  /**
+   * The architecture of the CPU
+   */
   architecture?: CPU;
 }
 
+/**
+ * Information about the user's device
+ */
 export interface DeviceInfo {
+  /**
+   * The type of device
+   */
   type?: Device;
+  /**
+   * The vendor of the device
+   */
   vendor?: Vendor;
+  /**
+   * The model name of the device
+   */
   model?: string;
 }
 
+/**
+ * Information about the user's browser engine
+ */
 export interface EngineInfo {
+  /**
+   * The engine's name
+   */
   name?: Engine;
+  /**
+   * The engine's version
+   */
   version?: string;
 }
 
+/**
+ * Information about the user's operating system
+ */
 export interface OSInfo {
+  /**
+   * The operating system's name
+   */
   name?: OS;
+  /**
+   * The operating system's version
+   */
   version?: string;
+  /**
+   * A guess as to what device type this operating system is running on
+   */
   typeGuess?: Device;
 }
 
+/**
+ * The result of parsing a user's agent.
+ */
 export interface Result {
+  /**
+   * The parsed browser information
+   */
   browser: BrowserInfo;
+  /**
+   * The parsed CPU information
+   */
   cpu: CPUInfo;
+  /**
+   * The parsed device information
+   */
   device: DeviceInfo;
+  /**
+   * The parsed engine information
+   */
   engine: EngineInfo;
+  /**
+   * The parsed operating system information
+   */
   os: OSInfo;
 }
 
+/**
+ * A parser for a specific part of the user agent string.
+ */
 export interface Parser<T extends keyof Result> {
+  /**
+   * How "specific" this parser is. A higher number means it's more specific.
+   * More specific results will override less specific results.
+   */
   specificity: number;
+  /**
+   * Matches the user agent string and returns the parsed result, if applicable.
+   * @param userAgent The user agent string to parse
+   * @returns The parsed result, or null if this parser doesn't apply to the user agent string
+   */
   parse: (userAgent: string) => Result[T] | null;
 }
 
+/**
+ * Parser collections to apply to the user agent.
+ */
 export interface Parsers {
+  /**
+   * Parsers for browser information
+   */
   browser: Parser<"browser">[];
+  /**
+   * Parsers for CPU information
+   */
   cpu: Parser<"cpu">[];
+  /**
+   * Parsers for device information
+   */
   device: Parser<"device">[];
+  /**
+   * Parsers for engine information
+   */
   engine: Parser<"engine">[];
+  /**
+   * Parsers for operating system information
+   */
   os: Parser<"os">[];
 }

@@ -3,6 +3,9 @@ import { parsersFromRegexes } from "./index";
 
 const p = parsersFromRegexes<"cpu">;
 
+/**
+ * Collection of parsers for CPU architecture
+ */
 export const parsers = [
   [
     p([/\b(?:(amd|x|x86[-_]?|wow|win)64)\b/i], () => {

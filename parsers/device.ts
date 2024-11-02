@@ -4,6 +4,9 @@ import { parsersFromRegexes } from "./index";
 
 const p = parsersFromRegexes<"device">;
 
+/**
+ * Collection of parsers for device type
+ */
 export const parsers = [
   // Mobile
   [

@@ -5,6 +5,9 @@ import { WINDOWS_VERSION_MAP } from "../constants";
 
 const p = parsersFromRegexes<"os">;
 
+/**
+ * Collection of parsers for operating systems
+ */
 export const parsers = [
   // Desktop
   [
